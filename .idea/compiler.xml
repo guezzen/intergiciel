@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ms-formation" />
+        <module name="config-server" />
         <module name="ms-scolarite" />
         <module name="ms-registry" />
         <module name="ms-gateway" />
@@ -19,6 +20,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="config-server" options="-parameters" />
       <module name="ms-formation" options="-parameters" />
       <module name="ms-formation1" options="-parameters" />
       <module name="ms-gateway" options="-parameters" />
