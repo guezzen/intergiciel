@@ -1,0 +1,32 @@
+server:
+  port: 7777
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8888/eureka
+
+spring:
+  application:
+    name: ms-gateway
+  main:
+        web-application-type: reactive
+
+
+  cloud:
+    gateway:
+      routes:
+        - id: route1
+          predicates:
+            - Path=/service-formation/**
+          filters:
+            - RewritePath=/service-formation/(?<s>.*), /${s}
+          uri: lb://ms-formation
+
+        - id: route2
+          predicates:
+            - Path=/service-scolarite/**
+          filters:
+            - RewritePath=/service-scolarite/(?<s>.*), /${s}
+          uri: lb://ms-scolarite
