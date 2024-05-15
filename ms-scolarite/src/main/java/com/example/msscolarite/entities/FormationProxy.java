@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @LoadBalancerClient(name="ms-formation")
 public interface FormationProxy {
 
-    @GetMapping("formations/{id}")
+    @GetMapping("/{id}")
     @CircuitBreaker(name="fall", fallbackMethod = "fallbackFormation" )
     public Formation getF(@PathVariable("id") Long id);
     default Formation fallbackFormation( @PathVariable("id") Long idf,
